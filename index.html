@@ -1,136 +1,14 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planeta Bubuls</title>
-
-<style>
-:root{
-  --bg:#060611;
-  --card:rgba(20,20,40,.75);
-  --text:#eaeaf0;
-  --muted:#b8b8d0;
-  --accent:#8b7cff;
-  --neon:#7df9ff;
-  --youtube:#ff3b3b;
-  --discord:#8b7cff;
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto;
-  color:var(--text);
-  background:var(--bg);
-  min-height:100vh;
-}
-
-/* HEADER */
-header{
-  text-align:center;
-  padding:3rem 1rem 2rem;
-}
-
-header h1{
-  font-size:clamp(2.4rem,5vw,3.3rem);
-  margin:0;
-  text-shadow:0 0 30px var(--accent);
-}
-
-header p{
-  margin:.6rem 0 0;
-  color:var(--muted);
-}
-
-/* MAIN */
-main{
-  max-width:1000px;
-  margin:0 auto;
-  padding:2rem 1.5rem 3rem;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:1.6rem;
-}
-
-/* CARD */
-.card{
-  background:linear-gradient(180deg, rgba(30,30,60,.9), var(--card));
-  border-radius:22px;
-  padding:1.5rem;
-  text-align:center;
-  box-shadow:0 0 35px rgba(120,120,255,.35);
-}
-
-/* IMAGE CARD */
-.gato-card img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  border-radius:18px;
-  display:block;
-}
-
-/* BUTTONS */
-.btn{
-  display:inline-block;
-  padding:12px 28px;
-  border-radius:16px;
-  font-weight:700;
-  text-decoration:none;
-  transition:.25s;
-  color:#fff;
-}
-
-.btn-youtube{
-  background:linear-gradient(135deg,#ff2f2f,#ff6a00);
-}
-
-.btn-discord{
-  background:linear-gradient(135deg,#5865F2,#8b7cff);
-}
-
-footer{
-  text-align:center;
-  padding:1.5rem 1rem 2.2rem;
-  color:var(--muted);
-  font-size:.9rem;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Prueba gato</title>
 </head>
+<body style="background:black; color:white; text-align:center; font-family:sans-serif;">
 
-<body>
+  <h1>Si ves el gato, GitHub funciona 🐱</h1>
 
-<header>
-  <h1>🌌 Planeta Bubuls</h1>
-  <p>Universo gamer · código · espacio</p>
-</header>
-
-<main>
-
-<section class="card">
-  <h2>YouTube</h2>
-  <a href="https://www.youtube.com/@dRoger922" target="_blank" class="btn btn-youtube">
-    Entrar
-  </a>
-</section>
-
-<!-- 🐱 IMAGEN -->
-<section class="card gato-card">
-  <img src="gato.png" alt="Gato misterioso">
-</section>
-
-<section class="card">
-  <h2>💬 My Discord</h2>
-  <a href="https://discord.gg/9kxMXHBG" target="_blank" class="btn btn-discord">
-    Unirse
-  </a>
-</section>
-
-</main>
-
-<footer>© 2026 · Planeta Bubuls</footer>
+  <img src="gato.png" style="max-width:90%; border:5px solid white; border-radius:12px;">
 
 </body>
 </html>
