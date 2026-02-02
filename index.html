@@ -4,18 +4,178 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Planeta Bubuls</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+:root {
+  --bg:#0a0a12;
+  --card:#141424;
+  --text:#eaeaf0;
+  --muted:#a0a0b3;
+  --accent:#8b7cff;
+  --neon:#7df9ff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* 🎬 EFECTO CINE */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  mix-blend-mode:overlay;
+  opacity:.35;
+  z-index:5;
+}
+
+/* CANVAS */
+#space{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  padding:3rem 1.5rem;
+  text-align:center;
+}
+header h1{
+  font-size:clamp(2.3rem,5vw,3.2rem);
+  margin:0 0 .5rem;
+  text-shadow:0 0 25px var(--accent);
+}
+header p{color:var(--muted)}
+
+/* MAIN */
+main{
+  max-width:900px;
+  margin:0 auto;
+  padding:1.5rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+}
+
+/* CARDS */
+.card{
+  background:linear-gradient(180deg,#1b1b32,var(--card));
+  border-radius:18px;
+  padding:1.5rem;
+  box-shadow:0 0 30px rgba(124,124,255,.35);
+  backdrop-filter:blur(6px);
+}
+
+/* MUSIC */
+#music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:rgba(15,15,35,.85);
+  color:var(--neon);
+  border:1px solid var(--neon);
+  padding:10px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 0 20px var(--neon);
+  z-index:10;
+}
+
+/* DISCORD */
+.discord-card{text-align:center}
+.discord-title{
+  font-size:1.6rem;
+  background:linear-gradient(90deg,#7df9ff,#8b7cff,#5865F2);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 25px rgba(124,124,255,.9);
+}
+.discord-sub{
+  color:#cfd3ff;
+  margin-bottom:1.2rem;
+  text-shadow:0 0 10px rgba(124,124,255,.6);
+}
+.discord-btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#5865F2,#8b7cff);
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 0 25px rgba(88,101,242,.9);
+}
+.discord-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 40px rgba(88,101,242,1);
+}
+
+/* YOUTUBE */
+.youtube-card{text-align:center}
+.youtube-title{
+  font-size:1.6rem;
+  background:linear-gradient(90deg,#ff0033,#ff6a00,#ffd500);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 25px rgba(255,80,80,.9);
+}
+.youtube-btn{
+  display:inline-block;
+  margin-top:1rem;
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#ff0033,#ff6a00);
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 0 25px rgba(255,60,60,.9);
+}
+.youtube-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 40px rgba(255,60,60,1);
+}
+.youtube-sub{
+  margin-top:1.2rem;
+  color:#ffdede;
+  text-shadow:0 0 12px rgba(255,80,80,.8);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:2rem 1rem;
+  color:var(--muted);
+  font-size:.9rem;
+}
+</style>
 </head>
 
 <body>
 
-<!-- 🎵 MÚSICA -->
 <audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
+
 <button id="music-btn">🎵 Música OFF</button>
 
-<!-- 🌌 ESPACIO -->
 <canvas id="space"></canvas>
 
 <header>
@@ -27,7 +187,7 @@
 
 <section class="card youtube-card">
   <h2 class="youtube-title">▶ YouTube</h2>
-  <a class="youtube-btn" href="https://www.youtube.com/@dRoger922" target="_blank">
+  <a href="https://www.youtube.com/@dRoger922" target="_blank" class="youtube-btn">
     Ir a mi canal
   </a>
   <p class="youtube-sub">☠ Pirate Retired ☠</p>
@@ -35,70 +195,71 @@
 
 <section class="card">
   <h2>🧪 Proyectos</h2>
-  <p>GitHub y cosas cósmicas 🚀</p>
-  <a class="btn" href="https://github.com/planetabubuls" target="_blank">Ver GitHub</a>
+  <ul>
+    <li><a href="https://github.com/planetabubuls" target="_blank">GitHub</a></li>
+    <li>Más proyectos pronto 🚀</li>
+  </ul>
 </section>
 
 <section class="card discord-card">
   <h2 class="discord-title">💬 My Discord</h2>
   <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
-  <a class="discord-btn" href="https://discord.gg/9kxMXHBG" target="_blank">
-    Unirse
-  </a>
+  <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
 </section>
 
 </main>
 
-<footer>
-© 2026 · Planeta Bubuls · Space Gamer Mode 🎮
-</footer>
+<footer>© 2026 · Planeta Bubuls · Space Gamer Mode 🎮</footer>
 
 <script>
-/* 🎵 MUSIC */
-const music = document.getElementById("bg-music");
-const btn = document.getElementById("music-btn");
-
-btn.onclick = () => {
-  if (music.paused) {
-    music.volume = 0.4;
+/* MUSIC */
+const music=document.getElementById("bg-music");
+const btn=document.getElementById("music-btn");
+btn.onclick=()=>{
+  if(music.paused){
+    music.volume=.4;
     music.play();
-    btn.textContent = "🔊 Música ON";
-  } else {
+    btn.textContent="🔊 Música ON";
+  }else{
     music.pause();
-    btn.textContent = "🎵 Música OFF";
+    btn.textContent="🎵 Música OFF";
   }
 };
 
-/* 🌌 CANVAS SPACE */
-const canvas = document.getElementById("space");
-const ctx = canvas.getContext("2d");
-let w, h;
-
+/* SPACE */
+const canvas=document.getElementById("space");
+const ctx=canvas.getContext("2d");
+let w,h;
 function resize(){
-  w = canvas.width = innerWidth;
-  h = canvas.height = innerHeight;
+  w=canvas.width=innerWidth;
+  h=canvas.height=innerHeight;
 }
-addEventListener("resize", resize);
+addEventListener("resize",resize);
 resize();
 
-const stars = [...Array(150)].map(()=>({
+const stars=[...Array(120)].map(()=>({
   x:Math.random()*w,
   y:Math.random()*h,
   r:Math.random()*1.5,
-  v:Math.random()*0.6+0.2
+  v:Math.random()*1+.2
 }));
 
 let shooting=[];
 setInterval(()=>{
-  shooting.push({x:Math.random()*w,y:-50,l:0});
+  shooting.push({x:Math.random()*w,y:-50,v:6,l:0});
 },2500);
+
+const planets=[
+  {x:w*.2,y:h*.3,r:40,c:"#7c7cff",a:0},
+  {x:w*.8,y:h*.6,r:60,c:"#9f7cff",a:1}
+];
 
 function draw(){
   ctx.clearRect(0,0,w,h);
 
   stars.forEach(s=>{
     ctx.fillStyle="#7df9ff";
-    ctx.shadowBlur=8;
+    ctx.shadowBlur=10;
     ctx.shadowColor="#7df9ff";
     ctx.beginPath();
     ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
@@ -114,8 +275,19 @@ function draw(){
     ctx.moveTo(s.x,s.y);
     ctx.lineTo(s.x-40,s.y-40);
     ctx.stroke();
-    s.x+=6; s.y+=6;
-    if(++s.l>20)shooting.splice(i,1);
+    s.x+=s.v;
+    s.y+=s.v;
+    if(++s.l>25)shooting.splice(i,1);
+  });
+
+  planets.forEach(p=>{
+    p.a+=.005;
+    ctx.fillStyle=p.c;
+    ctx.shadowBlur=25;
+    ctx.shadowColor=p.c;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y+Math.sin(p.a)*10,p.r,0,Math.PI*2);
+    ctx.fill();
   });
 
   requestAnimationFrame(draw);
