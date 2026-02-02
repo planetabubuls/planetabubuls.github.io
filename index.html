@@ -11,49 +11,37 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- Fondo estrellas -->
+  <div class="stars"></div>
 
-  <!-- Música -->
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Botón sonido -->
-  <button id="music-btn">🔊</button>
-
-  <!-- Header -->
   <header class="header">
-    <img src="https://i.imgur.com/6XKQFZL.png" alt="logo" class="logo" />
     <h1>Planeta Bubuls</h1>
     <p>Universo gamer · código · espacio</p>
   </header>
 
-  <!-- Cards -->
-  <section class="cards">
-
-    <!-- YOUTUBE -->
-    <div class="card youtube-card">
+  <main class="cards">
+    <!-- YouTube -->
+    <div class="card">
       <h2 class="youtube-title">
         <i class="fab fa-youtube"></i> YouTube
       </h2>
-
-      <p class="youtube-sub">
-        Pirate retired <span class="pirate">🏴‍☠️</span>
+      <p class="center-text">
+        Pirate retired 🏴‍☠️
       </p>
-
       <a
+        class="btn youtube-btn"
         href="https://www.youtube.com/@dRoger922"
         target="_blank"
-        class="youtube-btn"
       >
         Ir a mi canal
       </a>
     </div>
 
-    <!-- PROYECTOS -->
+    <!-- Proyectos -->
     <div class="card">
       <h2>🧪 Proyectos</h2>
       <ul>
@@ -62,39 +50,26 @@
       </ul>
     </div>
 
-    <!-- DISCORD -->
-    <div class="card discord-card">
+    <!-- Discord -->
+    <div class="card">
       <h2 class="discord-title">
         💬 My Discord
       </h2>
-      <p>Sumate a mi server y charlamos 🚀</p>
-      <a href="#" class="discord-btn">Unirse</a>
+      <p class="center-text">
+        Sumate a mi server y charlamos 🚀
+      </p>
+      <a
+        class="btn discord-btn"
+        href="https://discord.gg/9kxMXHBG"
+        target="_blank"
+      >
+        Unirse
+      </a>
     </div>
+  </main>
 
-  </section>
-
-  <!-- Footer -->
   <footer>
     © 2026 · Planeta Bubuls · Space Gamer Mode 🎮
   </footer>
-
-  <!-- JS música -->
-  <script>
-    const music = document.getElementById("bg-music");
-    const btn = document.getElementById("music-btn");
-    let playing = false;
-
-    btn.addEventListener("click", () => {
-      if (!playing) {
-        music.play();
-        btn.textContent = "🔇";
-      } else {
-        music.pause();
-        btn.textContent = "🔊";
-      }
-      playing = !playing;
-    });
-  </script>
-
 </body>
 </html>
