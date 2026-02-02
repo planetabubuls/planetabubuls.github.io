@@ -76,19 +76,35 @@
     }
 
     #music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(15,15,35,.85);
-      color: var(--neon);
-      border: 1px solid var(--neon);
-      padding: 10px 14px;
-      border-radius: 14px;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 0 20px var(--neon);
-      z-index: 10;
-    }
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(15,15,35,.85);
+  color: var(--neon);
+  border: 1px solid var(--neon);
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 20px var(--neon);
+  z-index: 10;
+}
+
+.discord-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #5865F2, #8b7cff);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(88,101,242,.8);
+}
+
+.discord-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(88,101,242,1);
+}
   </style>
 </head>
 <body>
@@ -123,9 +139,10 @@
     </section>
 
     <section class="card">
-      <h2>📬 Contacto</h2>
-      <p>Links intergalácticos próximamente.</p>
-    </section>
+  <h2>💬 My Discord</h2>
+  <p>Sumate a mi server y charlamos 🚀</p>
+  <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
+</section>
   </main>
 
   <footer>© 2026 · Planeta Bubuls · Space Gamer Mode 🎮</footer>
