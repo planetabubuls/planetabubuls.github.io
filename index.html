@@ -103,8 +103,6 @@ main{
   text-align:center;
   backdrop-filter:blur(8px);
   box-shadow:0 0 35px rgba(120,120,255,.35);
-  position:relative;
-  overflow:hidden;
 }
 
 /* TITLES */
@@ -113,12 +111,6 @@ main{
   color:var(--youtube);
   text-shadow:0 0 25px rgba(255,80,80,.9);
   margin-bottom:1.6rem;
-}
-
-.projects-title{
-  font-size:1.6rem;
-  color:#aaffc3;
-  margin-bottom:1rem;
 }
 
 .discord-title{
@@ -151,39 +143,6 @@ main{
   box-shadow:0 0 25px rgba(140,120,255,.9);
 }
 .btn-discord:hover{transform:scale(1.1)}
-
-/* LIST */
-ul{list-style:none;padding:0;margin:0}
-li{margin:.5rem 0}
-a{color:var(--neon);text-decoration:none}
-
-/* ===== GATO PROYECTOS ===== */
-.proyectos-card{
-  position:relative;
-  overflow:hidden;
-}
-
-.proyectos-card h2,
-.proyectos-card ul{
-  opacity:0;
-}
-
-.gato-overlay{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:22px;
-  z-index:2;
-  transition:transform .4s ease, filter .4s ease;
-  filter:brightness(.85) contrast(1.1);
-}
-
-.proyectos-card:hover .gato-overlay{
-  transform:scale(1.05);
-  filter:brightness(1) contrast(1.15);
-}
 
 /* MUSIC */
 #music-btn{
@@ -235,13 +194,15 @@ footer{
   </a>
 </section>
 
-<section class="card proyectos-card">
-  <h2 class="projects-title">🧪 Proyectos</h2>
-  <ul>
-    <li><a href="https://github.com/planetabubuls" target="_blank">GitHub</a></li>
-    <li>Más proyectos pronto 🚀</li>
-  </ul>
-  <img src="gato.png" alt="Gato misterioso" class="gato-overlay">
+<!-- 🐱 TARJETA CON LA IMAGEN -->
+<section class="card">
+  <img src="gato.png" alt="Gato misterioso" style="
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
+  ">
 </section>
 
 <section class="card">
