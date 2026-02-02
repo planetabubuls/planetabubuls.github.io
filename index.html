@@ -51,6 +51,24 @@ body::after{
   z-index:5;
 }
 
+/* ASTRONAUTA */
+.astronauta{
+  position:fixed;
+  right:6%;
+  top:35%;
+  font-size:130px;
+  opacity:.85;
+  pointer-events:none;
+  z-index:2;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-30px) rotate(2deg)}
+  100%{transform:translateY(0) rotate(0deg)}
+}
+
 /* HEADER */
 header{
   text-align:center;
@@ -124,7 +142,6 @@ main{
   color:#fff;
   box-shadow:0 0 25px rgba(255,60,60,.9);
 }
-
 .btn-youtube:hover{transform:scale(1.12)}
 
 .btn-discord{
@@ -132,21 +149,12 @@ main{
   color:#fff;
   box-shadow:0 0 25px rgba(140,120,255,.9);
 }
-
 .btn-discord:hover{transform:scale(1.1)}
 
 /* LIST */
-ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
+ul{list-style:none;padding:0;margin:0}
 li{margin:.5rem 0}
-
-a{
-  color:var(--neon);
-  text-decoration:none;
-}
+a{color:var(--neon);text-decoration:none}
 
 /* MUSIC */
 #music-btn{
@@ -176,6 +184,9 @@ footer{
 
 <body>
 
+<!-- ASTRONAUTA -->
+<div class="astronauta">🧑‍🚀</div>
+
 <audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -189,7 +200,6 @@ footer{
 
 <main>
 
-<!-- YOUTUBE -->
 <section class="card">
   <h2 class="youtube-title">YouTube</h2>
   <a href="https://www.youtube.com/@dRoger922" target="_blank" class="btn btn-youtube">
@@ -197,7 +207,6 @@ footer{
   </a>
 </section>
 
-<!-- PROYECTOS -->
 <section class="card">
   <h2 class="projects-title">🧪 Proyectos</h2>
   <ul>
@@ -206,7 +215,6 @@ footer{
   </ul>
 </section>
 
-<!-- DISCORD -->
 <section class="card">
   <h2 class="discord-title">💬 My Discord</h2>
   <p style="color:#d8d8ff;margin-bottom:1.2rem">
