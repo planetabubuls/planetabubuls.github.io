@@ -1,298 +1,299 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planeta Bubuls</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planeta Bubuls</title>
 
-  <style>
-    :root {
-      --bg: #0a0a12;
-      --card: #141424;
-      --text: #eaeaf0;
-      --muted: #a0a0b3;
-      --accent: #8b7cff;
-      --neon: #7df9ff;
-    }
+<style>
+:root {
+  --bg:#0a0a12;
+  --card:#141424;
+  --text:#eaeaf0;
+  --muted:#a0a0b3;
+  --accent:#8b7cff;
+  --neon:#7df9ff;
+}
 
-    * { box-sizing: border-box; }
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    canvas#space {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-    }
+/* 🎬 EFECTO CINE */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  mix-blend-mode:overlay;
+  opacity:.35;
+  z-index:5;
+}
 
-    /* 🎬 EFECTO CINE */
-    .cine-overlay {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-      background:
-        radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.35)),
-        repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,0.015),
-          rgba(255,255,255,0.015) 1px,
-          transparent 1px,
-          transparent 2px
-        );
-      animation: cinePulse 8s ease-in-out infinite;
-    }
+/* CANVAS */
+#space{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
 
-    @keyframes cinePulse {
-      0%, 100% { opacity: 0.25; }
-      50% { opacity: 0.35; }
-    }
+/* HEADER */
+header{
+  padding:3rem 1.5rem;
+  text-align:center;
+}
+header h1{
+  font-size:clamp(2.3rem,5vw,3.2rem);
+  margin:0 0 .5rem;
+  text-shadow:0 0 25px var(--accent);
+}
+header p{color:var(--muted)}
 
-    header {
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
+/* MAIN */
+main{
+  max-width:900px;
+  margin:0 auto;
+  padding:1.5rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+}
 
-    header h1 {
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      margin: 0 0 .5rem;
-      text-shadow: 0 0 20px var(--accent);
-    }
+/* CARDS */
+.card{
+  background:linear-gradient(180deg,#1b1b32,var(--card));
+  border-radius:18px;
+  padding:1.5rem;
+  box-shadow:0 0 30px rgba(124,124,255,.35);
+  backdrop-filter:blur(6px);
+}
 
-    header p { color: var(--muted); }
+/* MUSIC */
+#music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:rgba(15,15,35,.85);
+  color:var(--neon);
+  border:1px solid var(--neon);
+  padding:10px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 0 20px var(--neon);
+  z-index:10;
+}
 
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      position: relative;
-      z-index: 3;
-    }
+/* DISCORD */
+.discord-card{text-align:center}
+.discord-title{
+  font-size:1.6rem;
+  background:linear-gradient(90deg,#7df9ff,#8b7cff,#5865F2);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 25px rgba(124,124,255,.9);
+}
+.discord-sub{
+  color:#cfd3ff;
+  margin-bottom:1.2rem;
+  text-shadow:0 0 10px rgba(124,124,255,.6);
+}
+.discord-btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#5865F2,#8b7cff);
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 0 25px rgba(88,101,242,.9);
+}
+.discord-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 40px rgba(88,101,242,1);
+}
 
-    .card {
-      background: linear-gradient(180deg, #1b1b32, var(--card));
-      border-radius: 18px;
-      padding: 1.5rem;
-      box-shadow: 0 0 30px rgba(124,124,255,.35);
-      backdrop-filter: blur(6px);
-    }
+/* YOUTUBE */
+.youtube-card{text-align:center}
+.youtube-title{
+  font-size:1.6rem;
+  background:linear-gradient(90deg,#ff0033,#ff6a00,#ffd500);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 25px rgba(255,80,80,.9);
+}
+.youtube-btn{
+  display:inline-block;
+  margin-top:1rem;
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#ff0033,#ff6a00);
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 0 25px rgba(255,60,60,.9);
+}
+.youtube-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 40px rgba(255,60,60,1);
+}
+.youtube-sub{
+  margin-top:1.2rem;
+  color:#ffdede;
+  text-shadow:0 0 12px rgba(255,80,80,.8);
+}
 
-    a {
-      color: var(--neon);
-      text-decoration: none;
-    }
-
-    a:hover { text-shadow: 0 0 10px var(--neon); }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--muted);
-      font-size: .9rem;
-      position: relative;
-      z-index: 3;
-    }
-
-    #music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(15,15,35,.85);
-      color: var(--neon);
-      border: 1px solid var(--neon);
-      padding: 10px 14px;
-      border-radius: 14px;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 0 20px var(--neon);
-      z-index: 5;
-    }
-
-    .discord-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 18px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #5865F2, #8b7cff);
-      color: #fff;
-      font-weight: 700;
-      box-shadow: 0 0 20px rgba(88,101,242,.8);
-    }
-
-    .discord-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 35px rgba(88,101,242,1);
-    }
-
-    .discord-card {
-      text-align: center;
-    }
-
-    .discord-title {
-      font-size: 1.6rem;
-      background: linear-gradient(90deg, #7df9ff, #8b7cff, #5865F2);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px rgba(124,124,255,.8);
-      margin-bottom: .5rem;
-    }
-
-    .discord-sub {
-      color: #cfd3ff;
-      margin-bottom: 1.2rem;
-      text-shadow: 0 0 10px rgba(124,124,255,.5);
-    }
-  </style>
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:2rem 1rem;
+  color:var(--muted);
+  font-size:.9rem;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- 🎬 Overlay Cine -->
-  <div class="cine-overlay"></div>
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- AUDIO -->
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+<button id="music-btn">🎵 Música OFF</button>
 
-  <button id="music-btn">🎵 Música OFF</button>
+<canvas id="space"></canvas>
 
-  <!-- FONDO -->
-  <canvas id="space"></canvas>
+<header>
+  <h1>🌌 Planeta Bubuls</h1>
+  <p>Universo gamer · código · espacio</p>
+</header>
 
-  <header>
-    <h1>🌌 Planeta Bubuls</h1>
-    <p>Universo gamer · código · espacio</p>
-  </header>
+<main>
 
-  <main>
-    <section class="card">
-      <h2>👋 Sobre mí</h2>
-      <p>Soy <strong>planetabubuls</strong>. Bienvenido a mi universo digital gamer.</p>
-    </section>
+<section class="card youtube-card">
+  <h2 class="youtube-title">▶ YouTube</h2>
+  <a href="https://www.youtube.com/@dRoger922" target="_blank" class="youtube-btn">
+    Ir a mi canal
+  </a>
+  <p class="youtube-sub">☠ Pirate Retired ☠</p>
+</section>
 
-    <section class="card">
-      <h2>🧪 Proyectos</h2>
-      <ul>
-        <li><a href="https://github.com/planetabubuls" target="_blank">GitHub</a></li>
-        <li>Más proyectos pronto 🚀</li>
-      </ul>
-    </section>
+<section class="card">
+  <h2>🧪 Proyectos</h2>
+  <ul>
+    <li><a href="https://github.com/planetabubuls" target="_blank">GitHub</a></li>
+    <li>Más proyectos pronto 🚀</li>
+  </ul>
+</section>
 
-    <section class="card discord-card">
-      <h2 class="discord-title">💬 My Discord</h2>
-      <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
-      <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
-    </section>
-  </main>
+<section class="card discord-card">
+  <h2 class="discord-title">💬 My Discord</h2>
+  <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
+  <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
+</section>
 
-  <footer>© 2026 · Planeta Bubuls · Space Gamer Mode 🎮</footer>
+</main>
 
-  <script>
-    // MUSICA
-    const music = document.getElementById('bg-music');
-    const btn = document.getElementById('music-btn');
+<footer>© 2026 · Planeta Bubuls · Space Gamer Mode 🎮</footer>
 
-    btn.addEventListener('click', () => {
-      if (music.paused) {
-        music.volume = 0.4;
-        music.play();
-        btn.textContent = '🔊 Música ON';
-      } else {
-        music.pause();
-        btn.textContent = '🎵 Música OFF';
-      }
-    });
+<script>
+/* MUSIC */
+const music=document.getElementById("bg-music");
+const btn=document.getElementById("music-btn");
+btn.onclick=()=>{
+  if(music.paused){
+    music.volume=.4;
+    music.play();
+    btn.textContent="🔊 Música ON";
+  }else{
+    music.pause();
+    btn.textContent="🎵 Música OFF";
+  }
+};
 
-    // CANVAS SPACE
-    const canvas = document.getElementById('space');
-    const ctx = canvas.getContext('2d');
-    let w, h;
+/* SPACE */
+const canvas=document.getElementById("space");
+const ctx=canvas.getContext("2d");
+let w,h;
+function resize(){
+  w=canvas.width=innerWidth;
+  h=canvas.height=innerHeight;
+}
+addEventListener("resize",resize);
+resize();
 
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+const stars=[...Array(120)].map(()=>({
+  x:Math.random()*w,
+  y:Math.random()*h,
+  r:Math.random()*1.5,
+  v:Math.random()*1+.2
+}));
 
-    const layers = [
-      { count: 80, speed: 0.2, color: '#6b6bff' },
-      { count: 60, speed: 0.5, color: '#8b7cff' },
-      { count: 40, speed: 1.2, color: '#7df9ff' }
-    ];
+let shooting=[];
+setInterval(()=>{
+  shooting.push({x:Math.random()*w,y:-50,v:6,l:0});
+},2500);
 
-    const stars = layers.map(l =>
-      Array.from({ length: l.count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: Math.random() * 1.5 + 0.5,
-        v: l.speed,
-        c: l.color
-      }))
-    );
+const planets=[
+  {x:w*.2,y:h*.3,r:40,c:"#7c7cff",a:0},
+  {x:w*.8,y:h*.6,r:60,c:"#9f7cff",a:1}
+];
 
-    let shootingStars = [];
-    setInterval(() => {
-      shootingStars.push({ x: Math.random() * w, y: -50, vx: 6, vy: 6, life: 0 });
-    }, 2500);
+function draw(){
+  ctx.clearRect(0,0,w,h);
 
-    const planets = [
-      { x: w * 0.2, y: h * 0.3, r: 40, c: '#7c7cff', a: 0 },
-      { x: w * 0.8, y: h * 0.6, r: 60, c: '#9f7cff', a: 1 }
-    ];
+  stars.forEach(s=>{
+    ctx.fillStyle="#7df9ff";
+    ctx.shadowBlur=10;
+    ctx.shadowColor="#7df9ff";
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fill();
+    s.y+=s.v;
+    if(s.y>h)s.y=0;
+  });
 
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
+  shooting.forEach((s,i)=>{
+    ctx.strokeStyle="#fff";
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(s.x,s.y);
+    ctx.lineTo(s.x-40,s.y-40);
+    ctx.stroke();
+    s.x+=s.v;
+    s.y+=s.v;
+    if(++s.l>25)shooting.splice(i,1);
+  });
 
-      stars.forEach(layer => {
-        layer.forEach(s => {
-          ctx.fillStyle = s.c;
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = s.c;
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fill();
-          s.y += s.v;
-          if (s.y > h) { s.y = -5; s.x = Math.random() * w; }
-        });
-      });
+  planets.forEach(p=>{
+    p.a+=.005;
+    ctx.fillStyle=p.c;
+    ctx.shadowBlur=25;
+    ctx.shadowColor=p.c;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y+Math.sin(p.a)*10,p.r,0,Math.PI*2);
+    ctx.fill();
+  });
 
-      shootingStars.forEach((s, i) => {
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(s.x, s.y);
-        ctx.lineTo(s.x - 40, s.y - 40);
-        ctx.stroke();
-        s.x += s.vx;
-        s.y += s.vy;
-        if (++s.life > 25) shootingStars.splice(i, 1);
-      });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
 
-      planets.forEach(p => {
-        p.a += 0.005;
-        ctx.fillStyle = p.c;
-        ctx.shadowBlur = 25;
-        ctx.shadowColor = p.c;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y + Math.sin(p.a) * 10, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-  </script>
 </body>
 </html>
