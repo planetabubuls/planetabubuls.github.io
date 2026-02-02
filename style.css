@@ -1,108 +1,164 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+:root{
+  --bg:#0a0a12;
+  --card:#141424;
+  --text:#eaeaf0;
+  --muted:#a0a0b3;
+  --accent:#8b7cff;
+  --neon:#7df9ff;
 }
 
-body {
-  background: #05060f;
-  color: #eaeaff;
-  min-height: 100vh;
-  overflow: hidden;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,sans-serif;
 }
 
-/* Canvas fondo */
-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  padding: 60px 20px 40px;
+/* 🎬 EFECTO CINE */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  mix-blend-mode:overlay;
+  opacity:.35;
+  z-index:5;
 }
 
-.header h1 {
-  font-size: 3rem;
-  color: #b8b8ff;
-  text-shadow: 0 0 20px rgba(140,140,255,.6);
+/* CANVAS */
+#space{
+  position:fixed;
+  inset:0;
+  z-index:-1;
 }
 
-/* Cards */
-.cards {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 40px 20px;
+/* HEADER */
+header{
+  padding:3rem 1.5rem;
+  text-align:center;
+}
+header h1{
+  font-size:clamp(2.5rem,5vw,3.3rem);
+  text-shadow:0 0 25px var(--accent);
+}
+header p{
+  color:var(--muted);
 }
 
-.card {
-  background: rgba(20, 20, 40, 0.7);
-  border-radius: 18px;
-  padding: 28px;
-  width: 260px;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(100,100,255,.2);
-  backdrop-filter: blur(8px);
+/* MAIN */
+main{
+  max-width:900px;
+  margin:0 auto;
+  padding:1.5rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
 }
 
-/* Textos */
-.card h2 {
-  margin-bottom: 14px;
+/* CARDS */
+.card{
+  background:linear-gradient(180deg,#1b1b32,var(--card));
+  border-radius:18px;
+  padding:1.5rem;
+  box-shadow:0 0 30px rgba(124,124,255,.35);
+  backdrop-filter:blur(6px);
+  text-align:center;
 }
 
-.center-text {
-  margin-bottom: 20px;
-  opacity: 0.9;
+/* BOTONES */
+.btn{
+  display:inline-block;
+  margin-top:1rem;
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#7df9ff,#8b7cff);
+  color:#000;
+  font-weight:700;
+  text-decoration:none;
 }
 
-/* Botones */
-.btn {
-  display: inline-block;
-  padding: 10px 22px;
-  border-radius: 18px;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  transition: transform .2s, box-shadow .2s;
+/* YOUTUBE */
+.youtube-title{
+  background:linear-gradient(90deg,#ff0033,#ff6a00,#ffd500);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 25px rgba(255,80,80,.9);
+}
+.youtube-btn{
+  display:inline-block;
+  margin-top:1rem;
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#ff0033,#ff6a00);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 25px rgba(255,60,60,.9);
+}
+.youtube-sub{
+  margin-top:1rem;
+  color:#ffdede;
 }
 
-.btn:hover {
-  transform: scale(1.08);
+/* DISCORD */
+.discord-title{
+  background:linear-gradient(90deg,#7df9ff,#8b7cff,#5865F2);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 25px rgba(124,124,255,.9);
+}
+.discord-sub{
+  color:#cfd3ff;
+  margin-bottom:1rem;
+}
+.discord-btn{
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#5865F2,#8b7cff);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 25px rgba(88,101,242,.9);
 }
 
-/* YouTube */
-.youtube-title {
-  color: #ff4d4d;
-  text-shadow: 0 0 12px rgba(255,77,77,.6);
+/* 🎵 MUSIC BUTTON */
+#music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:rgba(15,15,35,.85);
+  color:var(--neon);
+  border:1px solid var(--neon);
+  padding:10px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 0 20px var(--neon);
+  z-index:20;
 }
 
-.youtube-btn {
-  background: #ff4d4d;
-  box-shadow: 0 0 15px rgba(255,77,77,.5);
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:2rem;
+  color:var(--muted);
+  font-size:.9rem;
 }
-
-/* Discord */
-.discord-title {
-  color: #8f8fff;
-  text-shadow: 0 0 12px rgba(140,140,255,.6);
-}
-
-.discord-btn {
-  background: #8f8fff;
-  box-shadow: 0 0 15px rgba(140,140,255,.5);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 30px;
-  opacity: 0.6;
-  font-size: 0.9rem;
-}
-
