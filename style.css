@@ -1,1 +1,142 @@
+<style>
+:root{
+  --bg:#0d0f21;
+  --bg-alt:#1a1f36;
+  --card:rgba(25,25,55,.85);
+  --text:#e8e8f0;
+  --muted:#a9a9c1;
+  --accent:#8b7cff;
+  --neon:#5fe0e0;
+  --youtube:#e65555;
+  --discord:#6b8aff;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto;
+  color:var(--text);
+  min-height:100vh;
+
+  /* FONDO SUAVE SIN IMAGEN */
+  background:linear-gradient(135deg,var(--bg),var(--bg-alt));
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:3.5rem 1rem 2rem;
+}
+
+header h1{
+  font-size:clamp(2.4rem,5vw,3.3rem);
+  text-shadow:0 0 16px var(--accent);
+}
+
+header p{
+  margin-top:.6rem;
+  color:var(--muted);
+}
+
+/* MAIN */
+main{
+  max-width:1000px;
+  margin:auto;
+  padding:2rem 1.5rem 3rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.6rem;
+}
+
+/* CARD */
+.card{
+  background:linear-gradient(180deg,rgba(35,35,70,.9),var(--card));
+  border-radius:22px;
+  padding:1.8rem;
+  text-align:center;
+  box-shadow:0 0 22px rgba(139,124,255,.35);
+}
+
+/* TITLES */
+.youtube-title{
+  color:var(--youtube);
+  font-size:1.7rem;
+  margin-bottom:1.4rem;
+}
+
+.projects-title{
+  color:var(--neon);
+  font-size:1.6rem;
+  margin-bottom:1rem;
+}
+
+.discord-title{
+  color:var(--discord);
+  font-size:1.6rem;
+  margin-bottom:.8rem;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:16px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.25s;
+}
+
+.btn-youtube{
+  background:linear-gradient(135deg,#d64b4b,#ff7158);
+  color:white;
+}
+
+.btn-discord{
+  background:linear-gradient(135deg,#4f72ff,#8b9dff);
+  color:white;
+}
+
+.btn:hover{
+  transform:scale(1.07);
+}
+
+/* LIST */
+ul{
+  list-style:none;
+}
+
+li{
+  margin:.5rem 0;
+}
+
+a{
+  color:var(--neon);
+  text-decoration:none;
+}
+
+/* MUSIC */
+#music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:rgba(20,20,50,.9);
+  color:var(--neon);
+  border:1px solid var(--neon);
+  padding:10px 16px;
+  border-radius:16px;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:1.5rem;
+  color:var(--muted);
+  font-size:.9rem;
+}
+</style>
 
