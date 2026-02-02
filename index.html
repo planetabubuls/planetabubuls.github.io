@@ -1,300 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planeta Bubuls</title>
-
-<style>
-:root {
-  --bg:#0a0a12;
-  --card:#141424;
-  --text:#eaeaf0;
-  --muted:#a0a0b3;
-  --accent:#8b7cff;
-  --neon:#7df9ff;
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-/* 🎬 EFECTO CINE */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55)),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,.03),
-      rgba(255,255,255,.03) 1px,
-      transparent 1px,
-      transparent 2px
-    );
-  mix-blend-mode:overlay;
-  opacity:.35;
-  z-index:5;
-}
-
-/* CANVAS */
-#space{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
-
-/* HEADER */
-header{
-  padding:3rem 1.5rem;
-  text-align:center;
-}
-header h1{
-  font-size:clamp(2.3rem,5vw,3.2rem);
-  margin:0 0 .5rem;
-  text-shadow:0 0 25px var(--accent);
-}
-header p{color:var(--muted)}
-
-/* MAIN */
-main{
-  max-width:900px;
-  margin:0 auto;
-  padding:1.5rem;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:1.5rem;
-}
-
-/* CARDS */
-.card{
-  background:linear-gradient(180deg,#1b1b32,var(--card));
-  border-radius:18px;
-  padding:1.5rem;
-  box-shadow:0 0 30px rgba(124,124,255,.35);
-  backdrop-filter:blur(6px);
-}
-
-/* MUSIC */
-#music-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:rgba(15,15,35,.85);
-  color:var(--neon);
-  border:1px solid var(--neon);
-  padding:10px 14px;
-  border-radius:14px;
-  cursor:pointer;
-  font-weight:600;
-  box-shadow:0 0 20px var(--neon);
-  z-index:10;
-}
-
-/* DISCORD */
-.discord-card{text-align:center}
-.discord-title{
-  font-size:1.6rem;
-  background:linear-gradient(90deg,#7df9ff,#8b7cff,#5865F2);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  text-shadow:0 0 25px rgba(124,124,255,.9);
-}
-.discord-sub{
-  color:#cfd3ff;
-  margin-bottom:1.2rem;
-}
-.discord-btn{
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#5865F2,#8b7cff);
-  color:#fff;
-  font-weight:700;
-  box-shadow:0 0 25px rgba(88,101,242,.9);
-}
-
-/* YOUTUBE */
-.youtube-card{text-align:center}
-.youtube-title{
-  font-size:1.6rem;
-  background:linear-gradient(90deg,#ff0033,#ff6a00,#ffd500);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  text-shadow:0 0 25px rgba(255,80,80,.9);
-}
-.youtube-btn{
-  display:inline-block;
-  margin-top:1rem;
-  padding:10px 20px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#ff0033,#ff6a00);
-  color:#fff;
-  font-weight:700;
-  box-shadow:0 0 25px rgba(255,60,60,.9);
-}
-.youtube-sub{
-  margin-top:1.2rem;
-  color:#ffdede;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:2rem 1rem;
-  color:var(--muted);
-  font-size:.9rem;
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>Planeta Bubuls</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<audio id="bg-music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button id="music-btn">🎵 Música OFF</button>
 
 <canvas id="space"></canvas>
 
-<header>
+<header class="header">
   <h1>🌌 Planeta Bubuls</h1>
-  <p>Universo gamer · código · espacio</p>
+  <p>Explorando otra dimensión</p>
 </header>
 
-<main>
+<section class="cards">
 
-<section class="card youtube-card">
-  <h2 class="youtube-title">▶ YouTube</h2>
-  <a href="https://www.youtube.com/@dRoger922" target="_blank" class="youtube-btn">
-    Ir a mi canal
-  </a>
-  <p class="youtube-sub">☠ Pirate Retired ☠</p>
+  <!-- YOUTUBE -->
+  <div class="card">
+    <h2 class="youtube-title">▶ YouTube</h2>
+    <p class="center-text">Pirate Retired 🏴‍☠️</p>
+    <a href="https://www.youtube.com/@dRoger922" target="_blank" class="btn youtube-btn">
+      Ir al canal
+    </a>
+  </div>
+
+  <!-- DISCORD -->
+  <div class="card">
+    <h2 class="discord-title">💬 My Discord</h2>
+    <p class="center-text">Sumate a mi server y charlamos 🚀</p>
+    <a href="https://discord.gg/9kxMXHBG" target="_blank" class="btn discord-btn">
+      Unirse
+    </a>
+  </div>
+
 </section>
 
-<section class="card">
-  <h2>🧪 Proyectos</h2>
-  <ul>
-    <li><a href="https://github.com/planetabubuls" target="_blank">GitHub</a></li>
-    <li>Más proyectos pronto 🚀</li>
-  </ul>
-</section>
-
-<section class="card discord-card">
-  <h2 class="discord-title">💬 My Discord</h2>
-  <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
-  <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
-</section>
-
-</main>
-
-<footer>© 2026 · Planeta Bubuls · Space Gamer Mode 🎮</footer>
+<footer>
+  © 2026 · Planeta Bubuls
+</footer>
 
 <script>
-/* MUSIC */
-const music=document.getElementById("bg-music");
-const btn=document.getElementById("music-btn");
-btn.onclick=()=>{
-  if(music.paused){
-    music.volume=.4;
-    music.play();
-    btn.textContent="🔊 Música ON";
-  }else{
-    music.pause();
-    btn.textContent="🎵 Música OFF";
-  }
-};
+/* ===============================
+   AGUJERO NEGRO + DILATACIÓN
+================================ */
 
-/* SPACE + WOW EFFECT */
-const canvas=document.getElementById("space");
-const ctx=canvas.getContext("2d");
-let w,h,mouse={x:null,y:null};
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
 
-function resize(){
-  w=canvas.width=innerWidth;
-  h=canvas.height=innerHeight;
+let w, h;
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
 }
-addEventListener("resize",resize);
-addEventListener("mousemove",e=>{
-  mouse.x=e.clientX;
-  mouse.y=e.clientY;
-});
 resize();
+window.addEventListener("resize", resize);
 
-const stars=[...Array(120)].map(()=>({
-  x:Math.random()*w,
-  y:Math.random()*h,
-  r:Math.random()*1.5,
-  v:Math.random()*1+.2
+// Estrellas
+const stars = Array.from({ length: 400 }, () => ({
+  x: Math.random() * w,
+  y: Math.random() * h,
+  z: Math.random(),
 }));
 
-let shooting=[];
-setInterval(()=>shooting.push({x:Math.random()*w,y:-50,v:6,l:0}),2500);
+let mouse = { x: w / 2, y: h / 2, speed: 0 };
+let lastMouse = { x: mouse.x, y: mouse.y };
+let timeScale = 1;
 
-const planets=[
-  {x:w*.2,y:h*.3,r:40,c:"#7c7cff",a:0},
-  {x:w*.8,y:h*.6,r:60,c:"#9f7cff",a:1}
-];
+window.addEventListener("mousemove", e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  mouse.speed = Math.hypot(mouse.x - lastMouse.x, mouse.y - lastMouse.y);
+  lastMouse = { ...mouse };
+});
 
-function draw(){
-  ctx.clearRect(0,0,w,h);
-  const pulse=!music.paused?1.4:1;
+function draw() {
+  ctx.fillStyle = "rgba(5,6,15,0.35)";
+  ctx.fillRect(0, 0, w, h);
 
-  stars.forEach(s=>{
-    if(mouse.x){
-      const dx=mouse.x-s.x;
-      const dy=mouse.y-s.y;
-      const d=Math.sqrt(dx*dx+dy*dy)||1;
-      const f=Math.min(120/d,3);
-      s.x-=dx/d*f*0.2;
-      s.y-=dy/d*f*0.2;
+  const cx = w / 2;
+  const cy = h / 2;
+
+  // Dilatación del tiempo
+  if (mouse.speed < 1) {
+    timeScale *= 0.995;
+  } else {
+    timeScale += 0.02;
+  }
+  timeScale = Math.max(0.3, Math.min(timeScale, 1.2));
+
+  stars.forEach(s => {
+    const dx = cx - s.x;
+    const dy = cy - s.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    // Fuerza del agujero negro
+    s.x += dx / dist * (1 - s.z) * 0.6 * timeScale;
+    s.y += dy / dist * (1 - s.z) * 0.6 * timeScale;
+
+    if (dist < 40) {
+      s.x = Math.random() * w;
+      s.y = Math.random() * h;
     }
 
-    ctx.fillStyle="#7df9ff";
-    ctx.shadowBlur=12*pulse;
-    ctx.shadowColor="#7df9ff";
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r*pulse,0,Math.PI*2);
-    ctx.fill();
-
-    s.y+=s.v;
-    if(s.y>h)s.y=0;
+    ctx.fillStyle = "rgba(180,180,255,0.9)";
+    ctx.fillRect(s.x, s.y, 1.5, 1.5);
   });
 
-  shooting.forEach((s,i)=>{
-    ctx.strokeStyle="#fff";
-    ctx.lineWidth=2;
-    ctx.beginPath();
-    ctx.moveTo(s.x,s.y);
-    ctx.lineTo(s.x-50,s.y-50);
-    ctx.stroke();
-    s.x+=s.v; s.y+=s.v;
-    if(++s.l>25)shooting.splice(i,1);
-  });
+  // Núcleo del agujero negro
+  const grd = ctx.createRadialGradient(cx, cy, 10, cx, cy, 120);
+  grd.addColorStop(0, "rgba(0,0,0,1)");
+  grd.addColorStop(0.5, "rgba(80,80,120,0.4)");
+  grd.addColorStop(1, "rgba(0,0,0,0)");
 
-  planets.forEach(p=>{
-    p.a+=.005;
-    ctx.fillStyle=p.c;
-    ctx.shadowBlur=30*pulse;
-    ctx.shadowColor=p.c;
-    ctx.beginPath();
-    ctx.arc(p.x,p.y+Math.sin(p.a)*12,p.r,0,Math.PI*2);
-    ctx.fill();
-  });
+  ctx.fillStyle = grd;
+  ctx.beginPath();
+  ctx.arc(cx, cy, 120, 0, Math.PI * 2);
+  ctx.fill();
 
   requestAnimationFrame(draw);
 }
+
 draw();
 </script>
 
