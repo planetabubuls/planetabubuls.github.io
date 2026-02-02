@@ -102,8 +102,28 @@
 }
 
 .discord-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(88,101,242,1);
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(88,101,242,1);
+}
+
+.discord-card {
+  text-align: center;
+}
+
+.discord-title {
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, #7df9ff, #8b7cff, #5865F2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(124,124,255,.8);
+  margin-bottom: .5rem;
+}
+
+.discord-sub {
+  color: #cfd3ff;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 10px rgba(124,124,255,.5);
 }
   </style>
 </head>
@@ -138,9 +158,9 @@
       </ul>
     </section>
 
-    <section class="card">
-  <h2>💬 My Discord</h2>
-  <p>Sumate a mi server y charlamos 🚀</p>
+    <section class="card discord-card">
+  <h2 class="discord-title">💬 My Discord</h2>
+  <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
   <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
 </section>
   </main>
