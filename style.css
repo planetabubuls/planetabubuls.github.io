@@ -1,1 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0b0f2b, #000);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.logo {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #9d9cff, #c77dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(150, 150, 255, 0.6);
+}
+
+.header p {
+  opacity: 0.8;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: rgba(20, 20, 40, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(120, 120, 255, 0.15);
+}
+
+/* YouTube */
+.youtube-title {
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, #ff0000, #ff4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.youtube-sub {
+  margin: 15px 0 20px;
+  opacity: 0.9;
+}
+
+.youtube-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff0000, #ff4d4d);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.youtube-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(255, 0, 0, 0.9);
+}
+
+/* Discord */
+.discord-title {
+  font-size: 1.5rem;
+  color: #7b7bff;
+  text-shadow: 0 0 15px rgba(120, 120, 255, 0.7);
+}
+
+.discord-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #6c6cff, #9d9cff);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(120, 120, 255, 0.6);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.6;
+}
+
+/* Botón música */
+#music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.4rem;
+  padding: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(150, 150, 255, 0.6);
+}
 
