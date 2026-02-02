@@ -1,126 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Planeta Bubuls</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planeta Bubuls</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<!-- 🎵 MÚSICA -->
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<button id="music-btn">🎵 Música OFF</button>
+
+<!-- 🌌 ESPACIO -->
 <canvas id="space"></canvas>
 
-<header class="header">
+<header>
   <h1>🌌 Planeta Bubuls</h1>
-  <p>Explorando otra dimensión</p>
+  <p>Universo gamer · código · espacio</p>
 </header>
 
-<section class="cards">
+<main>
 
-  <!-- YOUTUBE -->
-  <div class="card">
-    <h2 class="youtube-title">▶ YouTube</h2>
-    <p class="center-text">Pirate Retired 🏴‍☠️</p>
-    <a href="https://www.youtube.com/@dRoger922" target="_blank" class="btn youtube-btn">
-      Ir al canal
-    </a>
-  </div>
-
-  <!-- DISCORD -->
-  <div class="card">
-    <h2 class="discord-title">💬 My Discord</h2>
-    <p class="center-text">Sumate a mi server y charlamos 🚀</p>
-    <a href="https://discord.gg/9kxMXHBG" target="_blank" class="btn discord-btn">
-      Unirse
-    </a>
-  </div>
-
+<section class="card youtube-card">
+  <h2 class="youtube-title">▶ YouTube</h2>
+  <a class="youtube-btn" href="https://www.youtube.com/@dRoger922" target="_blank">
+    Ir a mi canal
+  </a>
+  <p class="youtube-sub">☠ Pirate Retired ☠</p>
 </section>
 
+<section class="card">
+  <h2>🧪 Proyectos</h2>
+  <p>GitHub y cosas cósmicas 🚀</p>
+  <a class="btn" href="https://github.com/planetabubuls" target="_blank">Ver GitHub</a>
+</section>
+
+<section class="card discord-card">
+  <h2 class="discord-title">💬 My Discord</h2>
+  <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
+  <a class="discord-btn" href="https://discord.gg/9kxMXHBG" target="_blank">
+    Unirse
+  </a>
+</section>
+
+</main>
+
 <footer>
-  © 2026 · Planeta Bubuls
+© 2026 · Planeta Bubuls · Space Gamer Mode 🎮
 </footer>
 
 <script>
-/* ===============================
-   AGUJERO NEGRO + DILATACIÓN
-================================ */
+/* 🎵 MUSIC */
+const music = document.getElementById("bg-music");
+const btn = document.getElementById("music-btn");
 
+btn.onclick = () => {
+  if (music.paused) {
+    music.volume = 0.4;
+    music.play();
+    btn.textContent = "🔊 Música ON";
+  } else {
+    music.pause();
+    btn.textContent = "🎵 Música OFF";
+  }
+};
+
+/* 🌌 CANVAS SPACE */
 const canvas = document.getElementById("space");
 const ctx = canvas.getContext("2d");
-
 let w, h;
-function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
 
-// Estrellas
-const stars = Array.from({ length: 400 }, () => ({
-  x: Math.random() * w,
-  y: Math.random() * h,
-  z: Math.random(),
+function resize(){
+  w = canvas.width = innerWidth;
+  h = canvas.height = innerHeight;
+}
+addEventListener("resize", resize);
+resize();
+
+const stars = [...Array(150)].map(()=>({
+  x:Math.random()*w,
+  y:Math.random()*h,
+  r:Math.random()*1.5,
+  v:Math.random()*0.6+0.2
 }));
 
-let mouse = { x: w / 2, y: h / 2, speed: 0 };
-let lastMouse = { x: mouse.x, y: mouse.y };
-let timeScale = 1;
+let shooting=[];
+setInterval(()=>{
+  shooting.push({x:Math.random()*w,y:-50,l:0});
+},2500);
 
-window.addEventListener("mousemove", e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-  mouse.speed = Math.hypot(mouse.x - lastMouse.x, mouse.y - lastMouse.y);
-  lastMouse = { ...mouse };
-});
+function draw(){
+  ctx.clearRect(0,0,w,h);
 
-function draw() {
-  ctx.fillStyle = "rgba(5,6,15,0.35)";
-  ctx.fillRect(0, 0, w, h);
-
-  const cx = w / 2;
-  const cy = h / 2;
-
-  // Dilatación del tiempo
-  if (mouse.speed < 1) {
-    timeScale *= 0.995;
-  } else {
-    timeScale += 0.02;
-  }
-  timeScale = Math.max(0.3, Math.min(timeScale, 1.2));
-
-  stars.forEach(s => {
-    const dx = cx - s.x;
-    const dy = cy - s.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-
-    // Fuerza del agujero negro
-    s.x += dx / dist * (1 - s.z) * 0.6 * timeScale;
-    s.y += dy / dist * (1 - s.z) * 0.6 * timeScale;
-
-    if (dist < 40) {
-      s.x = Math.random() * w;
-      s.y = Math.random() * h;
-    }
-
-    ctx.fillStyle = "rgba(180,180,255,0.9)";
-    ctx.fillRect(s.x, s.y, 1.5, 1.5);
+  stars.forEach(s=>{
+    ctx.fillStyle="#7df9ff";
+    ctx.shadowBlur=8;
+    ctx.shadowColor="#7df9ff";
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fill();
+    s.y+=s.v;
+    if(s.y>h)s.y=0;
   });
 
-  // Núcleo del agujero negro
-  const grd = ctx.createRadialGradient(cx, cy, 10, cx, cy, 120);
-  grd.addColorStop(0, "rgba(0,0,0,1)");
-  grd.addColorStop(0.5, "rgba(80,80,120,0.4)");
-  grd.addColorStop(1, "rgba(0,0,0,0)");
-
-  ctx.fillStyle = grd;
-  ctx.beginPath();
-  ctx.arc(cx, cy, 120, 0, Math.PI * 2);
-  ctx.fill();
+  shooting.forEach((s,i)=>{
+    ctx.strokeStyle="#fff";
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(s.x,s.y);
+    ctx.lineTo(s.x-40,s.y-40);
+    ctx.stroke();
+    s.x+=6; s.y+=6;
+    if(++s.l>20)shooting.splice(i,1);
+  });
 
   requestAnimationFrame(draw);
 }
-
 draw();
 </script>
 
