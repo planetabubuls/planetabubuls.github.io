@@ -14,12 +14,10 @@
   --accent:#8b7cff;
   --neon:#7df9ff;
 }
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  font-family:system-ui;
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
@@ -59,7 +57,6 @@ header{
 }
 header h1{
   font-size:clamp(2.3rem,5vw,3.2rem);
-  margin:0 0 .5rem;
   text-shadow:0 0 25px var(--accent);
 }
 header p{color:var(--muted)}
@@ -67,34 +64,20 @@ header p{color:var(--muted)}
 /* MAIN */
 main{
   max-width:900px;
-  margin:0 auto;
+  margin:auto;
   padding:1.5rem;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:1.5rem;
 }
 
-/* CARDS */
+/* CARD */
 .card{
   background:linear-gradient(180deg,#1b1b32,var(--card));
   border-radius:18px;
   padding:1.5rem;
   box-shadow:0 0 30px rgba(124,124,255,.35);
   backdrop-filter:blur(6px);
-  text-align:center;
-}
-
-/* ❤️ LATIDO */
-@keyframes heartbeat{
-  0%{transform:scale(1)}
-  20%{transform:scale(1.15)}
-  40%{transform:scale(1)}
-  60%{transform:scale(1.15)}
-  100%{transform:scale(1)}
-}
-.heartbeat{
-  display:inline-block;
-  animation:heartbeat 2.2s infinite;
 }
 
 /* MUSIC */
@@ -108,18 +91,33 @@ main{
   padding:10px 14px;
   border-radius:14px;
   cursor:pointer;
-  font-weight:600;
-  box-shadow:0 0 20px var(--neon);
   z-index:10;
 }
 
-/* YOUTUBE */
-.youtube-title{
+/* DISCORD */
+.discord-card{text-align:center}
+.discord-title{
   font-size:1.6rem;
-  background:linear-gradient(90deg,#ff0033,#ff6a00,#ffd500);
+  background:linear-gradient(90deg,#7df9ff,#8b7cff,#5865F2);
   -webkit-background-clip:text;
   color:transparent;
-  text-shadow:0 0 25px rgba(255,80,80,.9);
+}
+.discord-btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#5865F2,#8b7cff);
+  color:#fff;
+  font-weight:700;
+}
+
+/* YOUTUBE */
+.youtube-card{text-align:center}
+.youtube-title{
+  font-size:1.6rem;
+  background:linear-gradient(90deg,#ff0033,#ff6a00);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 .youtube-btn{
   display:inline-block;
@@ -129,42 +127,22 @@ main{
   background:linear-gradient(135deg,#ff0033,#ff6a00);
   color:#fff;
   font-weight:700;
-  box-shadow:0 0 25px rgba(255,60,60,.9);
-}
-.youtube-sub{
-  margin-bottom:1rem;
-  color:#ffdede;
-  text-shadow:0 0 12px rgba(255,80,80,.8);
 }
 
-/* DISCORD */
-.discord-title{
-  font-size:1.6rem;
-  background:linear-gradient(90deg,#7df9ff,#8b7cff,#5865F2);
-  -webkit-background-clip:text;
-  color:transparent;
-  text-shadow:0 0 25px rgba(124,124,255,.9);
+/* LATIDO */
+.heartbeat{
+  animation:beat 1.4s infinite;
 }
-.discord-sub{
-  color:#cfd3ff;
-  margin-bottom:1.2rem;
-}
-.discord-btn{
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#5865F2,#8b7cff);
-  color:#fff;
-  font-weight:700;
-  box-shadow:0 0 25px rgba(88,101,242,.9);
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  30%{transform:scale(1.15)}
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:2rem 1rem;
+  padding:2rem;
   color:var(--muted);
-  font-size:.9rem;
 }
 </style>
 </head>
@@ -174,8 +152,8 @@ footer{
 <audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
-
 <button id="music-btn">🎵 Música OFF</button>
+
 <canvas id="space"></canvas>
 
 <header>
@@ -185,32 +163,25 @@ footer{
 
 <main>
 
-<!-- YOUTUBE -->
-<section class="card">
+<section class="card youtube-card">
   <h2 class="youtube-title heartbeat">▶ YouTube</h2>
-
-  <!-- Pirate arriba -->
-  <p class="youtube-sub">☠ Pirate Retired ☠</p>
-
-  <!-- Botón abajo -->
+  <p>☠ Pirate Retired ☠</p>
   <a href="https://www.youtube.com/@dRoger922" target="_blank" class="youtube-btn">
     Ir a mi canal
   </a>
 </section>
 
-<!-- PROYECTOS -->
 <section class="card">
   <h2>🧪 Proyectos</h2>
-  <ul style="list-style:none;padding:0">
+  <ul>
     <li><a href="https://github.com/planetabubuls" target="_blank">GitHub</a></li>
     <li>Más proyectos pronto 🚀</li>
   </ul>
 </section>
 
-<!-- DISCORD -->
-<section class="card">
+<section class="card discord-card">
   <h2 class="discord-title heartbeat">💬 My Discord</h2>
-  <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
+  <p>Sumate a mi server y charlamos 🚀</p>
   <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
 </section>
 
@@ -233,36 +204,62 @@ btn.onclick=()=>{
   }
 };
 
-/* SPACE */
-const canvas=document.getElementById("space");
-const ctx=canvas.getContext("2d");
+/* SPACE CANVAS */
+const c=document.getElementById("space"),x=c.getContext("2d");
 let w,h;
-function resize(){
-  w=canvas.width=innerWidth;
-  h=canvas.height=innerHeight;
-}
-addEventListener("resize",resize);
-resize();
+function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
+addEventListener("resize",resize);resize();
 
-const stars=[...Array(120)].map(()=>({
+/* STARS */
+const stars=[...Array(120)].map(()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5,v:.4+Math.random()}));
+
+/* PLANETS */
+const planets=[...Array(6)].map(()=>({
   x:Math.random()*w,
   y:Math.random()*h,
-  r:Math.random()*1.5,
-  v:Math.random()*1+.2
+  r:20+Math.random()*60,
+  c:`hsl(${Math.random()*360},70%,60%)`,
+  a:Math.random()*10
+}));
+
+/* OVNIS */
+const ufos=[...Array(3)].map(()=>({
+  x:Math.random()*w,
+  y:Math.random()*h*.6,
+  v:.4+Math.random()
 }));
 
 function draw(){
-  ctx.clearRect(0,0,w,h);
+  x.clearRect(0,0,w,h);
+
   stars.forEach(s=>{
-    ctx.fillStyle="#7df9ff";
-    ctx.shadowBlur=10;
-    ctx.shadowColor="#7df9ff";
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fill();
-    s.y+=s.v;
-    if(s.y>h)s.y=0;
+    x.fillStyle="#7df9ff";
+    x.beginPath();
+    x.arc(s.x,s.y,s.r,0,Math.PI*2);
+    x.fill();
+    s.y+=s.v;if(s.y>h)s.y=0;
   });
+
+  planets.forEach(p=>{
+    p.a+=.003;
+    x.fillStyle=p.c;
+    x.shadowBlur=25;
+    x.shadowColor=p.c;
+    x.beginPath();
+    x.arc(p.x,p.y+Math.sin(p.a)*10,p.r,0,Math.PI*2);
+    x.fill();
+  });
+
+  ufos.forEach(u=>{
+    x.shadowBlur=20;
+    x.shadowColor="#7df9ff";
+    x.fillStyle="#ccc";
+    x.beginPath();
+    x.ellipse(u.x,u.y,25,10,0,0,Math.PI*2);
+    x.fill();
+    u.x+=u.v;if(u.x>w+50)u.x=-50;
+  });
+
   requestAnimationFrame(draw);
 }
 draw();
