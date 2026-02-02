@@ -1,1 +1,108 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: #05060f;
+  color: #eaeaff;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Canvas fondo */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #b8b8ff;
+  text-shadow: 0 0 20px rgba(140,140,255,.6);
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+}
+
+.card {
+  background: rgba(20, 20, 40, 0.7);
+  border-radius: 18px;
+  padding: 28px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(100,100,255,.2);
+  backdrop-filter: blur(8px);
+}
+
+/* Textos */
+.card h2 {
+  margin-bottom: 14px;
+}
+
+.center-text {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+/* YouTube */
+.youtube-title {
+  color: #ff4d4d;
+  text-shadow: 0 0 12px rgba(255,77,77,.6);
+}
+
+.youtube-btn {
+  background: #ff4d4d;
+  box-shadow: 0 0 15px rgba(255,77,77,.5);
+}
+
+/* Discord */
+.discord-title {
+  color: #8f8fff;
+  text-shadow: 0 0 12px rgba(140,140,255,.6);
+}
+
+.discord-btn {
+  background: #8f8fff;
+  box-shadow: 0 0 15px rgba(140,140,255,.5);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
 
