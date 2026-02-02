@@ -31,6 +31,29 @@
       z-index: -1;
     }
 
+    /* 🎬 EFECTO CINE */
+    .cine-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background:
+        radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.35)),
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.015),
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+      animation: cinePulse 8s ease-in-out infinite;
+    }
+
+    @keyframes cinePulse {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.35; }
+    }
+
     header {
       padding: 3rem 1.5rem;
       text-align: center;
@@ -51,6 +74,8 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
+      position: relative;
+      z-index: 3;
     }
 
     .card {
@@ -73,6 +98,8 @@
       padding: 2rem 1rem;
       color: var(--muted);
       font-size: .9rem;
+      position: relative;
+      z-index: 3;
     }
 
     #music-btn {
@@ -87,7 +114,7 @@
       cursor: pointer;
       font-weight: 600;
       box-shadow: 0 0 20px var(--neon);
-      z-index: 10;
+      z-index: 5;
     }
 
     .discord-btn {
@@ -127,8 +154,10 @@
     }
   </style>
 </head>
-
 <body>
+
+  <!-- 🎬 Overlay Cine -->
+  <div class="cine-overlay"></div>
 
   <!-- AUDIO -->
   <audio id="bg-music" loop>
@@ -146,23 +175,11 @@
   </header>
 
   <main>
-
-    <!-- YOUTUBE (reemplaza Sobre mí) -->
-    <section class="card discord-card">
-      <h2 class="discord-title">▶️ YouTube</h2>
-      <p class="discord-sub">Pirate retired 🏴‍☠️</p>
-      <a
-        href="https://www.youtube.com/@dRoger922"
-        target="_blank"
-        class="discord-btn"
-        style="background: linear-gradient(135deg, #ff3b3b, #ff6b6b);
-               box-shadow: 0 0 20px rgba(255,59,59,.8);"
-      >
-        Ir a mi canal
-      </a>
+    <section class="card">
+      <h2>👋 Sobre mí</h2>
+      <p>Soy <strong>planetabubuls</strong>. Bienvenido a mi universo digital gamer.</p>
     </section>
 
-    <!-- PROYECTOS -->
     <section class="card">
       <h2>🧪 Proyectos</h2>
       <ul>
@@ -171,15 +188,11 @@
       </ul>
     </section>
 
-    <!-- DISCORD -->
     <section class="card discord-card">
       <h2 class="discord-title">💬 My Discord</h2>
       <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
-      <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">
-        Unirse
-      </a>
+      <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
     </section>
-
   </main>
 
   <footer>© 2026 · Planeta Bubuls · Space Gamer Mode 🎮</footer>
@@ -281,6 +294,5 @@
 
     draw();
   </script>
-
 </body>
 </html>
