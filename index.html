@@ -153,33 +153,10 @@ main{
   box-shadow:0 0 40px rgba(255,60,60,1);
 }
 .youtube-sub{
-  margin-top:1.2rem;
+  margin-bottom:.8rem;
   color:#ffdede;
   text-shadow:0 0 12px rgba(255,80,80,.8);
 }
-
-/* 💓 LATIDO TIPO CORAZÓN */
-@keyframes heartbeat {
-  0%   { transform: scale(1); }
-  20%  { transform: scale(1.08); }
-  35%  { transform: scale(1); }
-  55%  { transform: scale(1.12); }
-  100% { transform: scale(1); }
-}
-
-.youtube-title,
-.youtube-btn{
-  animation:heartbeat 2.4s infinite;
-}
-
-.youtube-btn{animation-delay:.2s}
-
-.discord-title,
-.discord-btn{
-  animation:heartbeat 2.6s infinite;
-}
-
-.discord-btn{animation-delay:.25s}
 
 /* FOOTER */
 footer{
@@ -208,14 +185,18 @@ footer{
 
 <main>
 
+<!-- YOUTUBE (ORDEN CORREGIDO) -->
 <section class="card youtube-card">
+  <p class="youtube-sub">☠ Pirate Retired ☠</p>
+
   <h2 class="youtube-title">▶ YouTube</h2>
+
   <a href="https://www.youtube.com/@dRoger922" target="_blank" class="youtube-btn">
     Ir a mi canal
   </a>
-  <p class="youtube-sub">☠ Pirate Retired ☠</p>
 </section>
 
+<!-- PROYECTOS -->
 <section class="card">
   <h2>🧪 Proyectos</h2>
   <ul>
@@ -224,12 +205,11 @@ footer{
   </ul>
 </section>
 
+<!-- DISCORD -->
 <section class="card discord-card">
   <h2 class="discord-title">💬 My Discord</h2>
   <p class="discord-sub">Sumate a mi server y charlamos 🚀</p>
-  <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">
-    Unirse
-  </a>
+  <a href="https://discord.gg/9kxMXHBG" target="_blank" class="discord-btn">Unirse</a>
 </section>
 
 </main>
@@ -262,7 +242,7 @@ function resize(){
 addEventListener("resize",resize);
 resize();
 
-const stars=[...Array(120)].map(()=>({
+const stars=[...Array(120)].map(()=>( {
   x:Math.random()*w,
   y:Math.random()*h,
   r:Math.random()*1.5,
